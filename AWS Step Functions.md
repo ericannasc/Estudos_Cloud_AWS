@@ -4,7 +4,7 @@ Este arquivo contém a documentação e a implementação prática de uma máqui
 
 ---
 
-## 📌 O que é o AWS Step Functions?
+##  O que é o AWS Step Functions?
 
 O **AWS Step Functions** é um serviço de orquestração serverless que permite coordenar múltiplos serviços da AWS e componentes de aplicação em workflows visuais e estruturados. 
 
@@ -12,7 +12,7 @@ Ele gerencia automaticamente o estado da aplicação, a execução das etapas, a
 
 ---
 
-## 💡 Benefícios de Utilizar o Step Functions
+##  Benefícios de Utilizar o Step Functions
 
 * **Visualização Clara e Em Tempo Real:** Permite desenhar e monitorar o fluxo de execução graficamente através do Workflow Studio.
 * **Gerenciamento de Estado Automático:** Elimina a necessidade de manter estados intermediários em código manual ou bancos de dados adicionais.
