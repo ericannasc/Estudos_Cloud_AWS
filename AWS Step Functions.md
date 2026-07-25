@@ -93,3 +93,28 @@ Durante o desenvolvimento da primeira versão prática no Workflow Studio, surgi
 Embora a máquina de estado tenha sido construída utilizando o construtor visual (Workflow Studio), toda a interface drag-and-drop é traduzida em tempo real para o Amazon States Language (ASL) — uma especificação baseada em JSON que define estados, transições, saídas e regras.
 
 ![Fluxo AWS code](Imagens/3.png)
+
+---
+
+## Recursos e Serviços AWS Utilizados
+
+Para evoluir o fluxo de uma simples simulação para uma **arquitetura Serverless real e resiliente**, foram integrados diversos serviços nativos da AWS. Cada componente desempenha um papel específico no processamento, persistência e comunicação do ciclo de vida do pedido:
+
+![Fluxo AWS completo](Imagens/4.png)
+---
+
+### 1.  AWS Lambda (`Lambda: Invoke`)
+* **Tipo de Estado:** `Task`
+* **Função no Fluxo:** Atua como o ponto de entrada da lógica de negócio. A função recebe o payload inicial contendo os dados do pedido, realiza as validações necessárias (ex: regra de negócio, verificação de consistência) e retorna um objeto contendo o status da avaliação e a flag `aprovado` (`true`/`false`).
+
+### 2.  Amazon DynamoDB (`DynamoDB: PutItem`)
+* **Tipo de Estado:** `Task`
+* **Função no Fluxo:** Responsável pela **persistência NoSQL de alta performance**. O estado utiliza a integração direta via SDK (*PutItem*) para gravar os dados do pedido na tabela `Pedidos` assim que ele é processado, registrando o estado inicial como `PROCESSANDO`. 
+* *Nota Técnica:* O parâmetro `ResultPath` foi configurado como `$.dynamoResult` para preservar as variáveis do payload de entrada (como `aprovado`) para as etapas seguintes.
+
+### 3.  Amazon SNS (`SNS: Publish`)
+* **Tipo de Estado:** `Task`
+* **Função no Fluxo:** Serviço de mensageria pub/sub para **notificação em tempo real**. Foram utilizados dois nós distintos de publicação:
+  * **Notificação de Aprovação:** Dispara uma mensagem via tópico SNS informando ao cliente/equipe que o pedido foi aprovado e processado.
+  * **Notificação de Rejeição:** Envia um alerta informando que o pedido não atendeu aos critérios de validação.
+
