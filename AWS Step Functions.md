@@ -22,7 +22,7 @@ Ele gerencia automaticamente o estado da aplicação, a execução das etapas, a
 
 ---
 
-## 📐 Ideia do Fluxo Desenvolvido
+##  Ideia do Fluxo Desenvolvido
 
 O fluxo construído simula o **ciclo de vida do processamento de um pedido**, avaliando a aprovação ou rejeição da transação com base na entrada fornecida.
 
