@@ -10,6 +10,8 @@ Repositório para realização de atividades práticas do Bootcamp: **Fundamento
 
 **📘 1º Desafio:** [Instancias EC2](Computação%20em%20nuvem%20com%20EC2.md)
 
+**📘 2º Desafio:** [AWS Step Functions](AWS%20Step%20Functions.md)
+
 ---
 
 <div align="center">
