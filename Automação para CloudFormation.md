@@ -47,18 +47,15 @@ Acompanhamento dos logs na aba Actions do GitHub: o servidor é provisionado, o 
 **5. Criação automatizada no CloudFormation:**
 Após execução no GitHub Actions, a nova instância foi criada e entrou em execução na AWS. Passado os minutos para deleção, ela foi excluída.
 
-
+![Secrets](Imagens/pilha1.png)
 ![Secrets](Imagens/pilha2.png)
-
 ![Secrets](Imagens/pilha3.png)
-
-
 
 ---
 
 ## Códigos do Projeto
 
-desafioCloudFormation/infraestrutura.yaml
+[desafioCloudFormation/infraestrutura.yaml](https://github.com/ericannasc/Estudos_Cloud_AWS/blob/main/desafioCloudFormation/infraestrutura.yaml)
 
 ``` 
 AWSTemplateFormatVersion: '2010-09-09'
@@ -129,7 +126,7 @@ Outputs:
     Value: !Sub 'http://${MyWebServerInstance.PublicDnsName}'
 ```
 
-desafioCloudFormation/gerenciadorPilha.py
+[desafioCloudFormation/gerenciadorPilha.py](https://github.com/ericannasc/Estudos_Cloud_AWS/blob/main/desafioCloudFormation/gerenciadorPilha.py)
 
 ```
 import boto3
@@ -202,7 +199,7 @@ if __name__ == "__main__":
         sys.exit(1)
 ```
 
-.github/workflows/deploy.yml
+[.github/workflows/deploy.yml](https://github.com/ericannasc/Estudos_Cloud_AWS/blob/main/.github/workflows/deploy.yml)
 
 ```
 name: Deploy Automatizado via AWS SDK
