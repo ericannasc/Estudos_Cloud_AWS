@@ -4,7 +4,7 @@ import time
 
 REGION = "us-east-1"
 STACK_NAME = "Stack-Automated-EC2-SDK"
-TEMPLATE_PATH = "templates/web-infrastructure.yaml"
+TEMPLATE_PATH = "desafioCloudFormation/infraestrutura.yaml"
 
 cf_client = boto3.client("cloudformation", region_name=REGION)
 
