@@ -31,4 +31,4 @@ jobs:
           pip install boto3
 
       - name: Executar script Python com AWS SDK
-        run: python manage_stack.py
+        run: python gerenciadorPilha.py
