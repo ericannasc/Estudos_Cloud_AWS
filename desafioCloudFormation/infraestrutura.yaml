@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Infraestrutura Automatizada via AWS SDK - Desafio DIO'
+
+Parameters:
+  InstanceTypeParam:
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      - t3.micro
+      - t2.micro
+    Description: Tipo de instancia elegivel para o Free Tier
+
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64'
+    Description: Busca automatica da AMI mais recente via SSM Parameter Store
+
+Resources:
+  WebServerSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Permite acesso HTTP (80) e SSH (22)
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: Acesso Web HTTP
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+          Description: Acesso SSH de Administracao
+      Tags:
+        - Key: Name
+          Value: web-server-sg
+
+  MyWebServerInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: !Ref InstanceTypeParam
+      ImageId: !Ref LatestAmiId
+      SecurityGroupIds:
+        - !Ref WebServerSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          dnf update -y
+          dnf install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          echo "<h1>Infraestrutura Automatizada via GitHub Actions e AWS SDK!</h1>" > /var/www/html/index.html
+      Tags:
+        - Key: Name
+          Value: Servidor-Web-Automated-SDK
+        - Key: Environment
+          Value: Dev
+
+Outputs:
+  PublicIP:
+    Description: IP Publico do Servidor Web
+    Value: !GetAtt MyWebServerInstance.PublicIp
+
+  WebsiteURL:
+    Description: URL do Servidor Web
+    Value: !Sub 'http://${MyWebServerInstance.PublicDnsName}'
