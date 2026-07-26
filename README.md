@@ -12,6 +12,8 @@ Repositório para realização de atividades práticas do Bootcamp: **Fundamento
 
 **📘 2º Desafio:** [AWS Step Functions](AWS%20Step%20Functions.md)
 
+**📘 3º Desafio:** [AWS CloudFormation](AWS%20CloundFormation.md)
+
 ---
 
 <div align="center">
