@@ -57,8 +57,8 @@ if __name__ == "__main__":
         get_stack_outputs()
         
         # Pausa de 15 segundos apenas para permitir visualizacao no log do pipeline
-        print("\nAguardando 60 segundos antes da limpeza de seguranca...")
-        time.sleep(60)
+        print("\nAguardando 2 minutos antes da limpeza de seguranca...")
+        time.sleep(120)
         
         # 3. Limpeza FinOps
         delete_stack()
