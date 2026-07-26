@@ -47,11 +47,12 @@ Acompanhamento dos logs na aba Actions do GitHub: o servidor é provisionado, o 
 **5. Criação automatizada no CloudFormation:**
 Após execução no GitHub Actions, a nova instância foi criada e entrou em execução na AWS. Passado os minutos para deleção, ela foi excluída.
 
-![Secrets](Imagens/pilha1.png)
 
 ![Secrets](Imagens/pilha2.png)
 
 ![Secrets](Imagens/pilha3.png)
+
+
 
 ---
 
