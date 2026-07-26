@@ -16,6 +16,8 @@ Repositório para realização de atividades práticas do Bootcamp: **Fundamento
 
 **📘 4º Desafio:** [AWS Automação com CloudFormation](Automação%20para%20CloudFormation.md)
 
+**📘 5º Desafio:** [Automação de tarefas com S3 e Lambda](Automação%20de%20tarefas%20com%20S3%20e%20Lambda.md)
+
 ---
 
 <div align="center">
