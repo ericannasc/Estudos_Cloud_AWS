@@ -14,6 +14,8 @@ Repositório para realização de atividades práticas do Bootcamp: **Fundamento
 
 **📘 3º Desafio:** [AWS CloudFormation](AWS%20CloundFormation.md)
 
+**📘 4º Desafio:** [AWS Automação com CloudFormation](Automação%20para%20CloudFormation.md)
+
 ---
 
 <div align="center">
